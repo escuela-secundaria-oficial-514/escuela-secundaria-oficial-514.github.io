@@ -141,7 +141,35 @@
 	  font-size: 3.6rem;
 	}
   }</style>
-
+<script>
+	function includeHTML() {
+	  var z, i, elmnt, file, xhttp;
+	  /*loop through a collection of all HTML elements:*/
+	  z = document.getElementsByTagName("*");
+	  for (i = 0; i < z.length; i++) {
+		elmnt = z[i];
+		/*search for elements with a certain atrribute:*/
+		file = elmnt.getAttribute("w3-include-html");
+		if (file) {
+		  /*make an HTTP request using the attribute value as the file name:*/
+		  xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+			if (this.readyState == 4) {
+			  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+			  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+			  /*remove the attribute, and call this function once more:*/
+			  elmnt.removeAttribute("w3-include-html");
+			  includeHTML();
+			}
+		  }      
+		  xhttp.open("GET", file, true);
+		  xhttp.send();
+		  /*exit the function:*/
+		  return;
+		}
+	  }
+	};
+	</script>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -171,6 +199,7 @@
 			 </form>
 	 	</div><!-- /.col -->
 	 </div><!-- /.row -->
+	 <div w3-include-html="h1.html"></div> 
  </div><!-- /.container -->
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
@@ -195,13 +224,13 @@ $(function() {
 			to this point in the code this is a 24 clock */
 		if (hours < 12) {
 			ante = "AM";
-			greeting = "Buenos días";
+			greeting = "buenos días";
 		} else if (hours === 12 && hours >= 3) {
 			ante = "PM";
-			greeting = "Buenas tardes"
+			greeting = "buenas tardes"
 		} else {
 			ante = "PM";
-			greeting = "Buenas noches";
+			greeting = "buenas noches";
 		}
 
 		/* Since it is a 24 hour clock, 0 represents 12am, if that is the case
@@ -265,7 +294,7 @@ $(function() {
 		// Display the following in html
 		$("#time").html(hours + ":" + minutes + " " + ante);
 		$("#day").html(date.getWeekName() + ", " + date.getMonthName() + " " + dd);
-		$("#greeting").html("Hola," + greeting + " " + userName + ".");
+		$("#greeting").html("Hola, " + greeting + " " + userName + "");
 		
 		// The interval is necessary for proper time syncing
 		setInterval(time, 1000);
@@ -274,6 +303,8 @@ $(function() {
 });
 
 </script>
-
+<script>
+	includeHTML();
+	</script>
 </body>
 </html>

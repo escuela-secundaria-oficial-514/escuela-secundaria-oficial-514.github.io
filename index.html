@@ -30,6 +30,15 @@
 	position: relative;	
 	margin:0;
 	padding:0;
+	  
+	 background: #2980b9 url('img/bg_1.svg') repeat 0 0;
+	-webkit-animation: 10s linear 0s normal none infinite animate;
+	-moz-animation: 10s linear 0s normal none infinite animate;
+	-ms-animation: 10s linear 0s normal none infinite animate;
+	-o-animation: 10s linear 0s normal none infinite animate;
+	animation: 10s linear 0s normal none infinite animate;
+ 
+}
 
     background: #2980b9 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
 	-webkit-animation: 10s linear 0s normal none infinite animate;
@@ -171,14 +180,13 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<!-- Due to the codepen sandboxing the form will not submit properly in this environment -->
 <div class="background">
  <div class="container">
   <div class="row flex-column justify-content-center align-items-center text-center">
    <div class="col-sm-12 col-md-10 col-lg-8">
-    <h1 id="time">12:00 AM</h1>
-    <h3 id="day" class="display-5">Monday, January 01</h3>
-    <h2 id="greeting">Good Morning</h2>
+    <h1 id="time">07:00 PM</h1>
+    <h3 id="day" class="display-5">Jueves, Julio 02</h3>
+    <h2 id="greeting">Hola, buenas noches</h2>
     <!-- <h3>What would you like to inquire about today?</h3> -->
    </div><!-- /.col -->
    
@@ -224,8 +232,10 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
   // Output the result in an element with id="findecurso"
-  document.getElementById("findecurso").innerHTML = days + " días " + hours + " horas "
-  + minutes + " minutos " + seconds + "<b>´s</b> ";
+  document.getElementById("findecurso").innerHTML = days + " días "  ";
+	
+	// Output the result in an element with id="findecurso"
+  	// document.getElementById("findecurso").innerHTML = days + " días " + hours + " horas " + minutes + " minutos " + seconds + "´s ";
     
   // If the count down is over, write some text 
   if (distance < 0) {
@@ -338,8 +348,6 @@ $(function() {
 });
 
 </script>
-<script>
-	includeHTML();
-	</script>
+<script>includeHTML();	</script>
 </body>
 </html>

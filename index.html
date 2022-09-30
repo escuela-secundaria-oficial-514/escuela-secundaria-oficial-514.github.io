@@ -19,7 +19,6 @@
   }
   
   .background {
-	/*background: url("https://images.pexels.com/photos/91224/pexels-photo-91224.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");*/
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -28,8 +27,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: relative;
-	
+	position: relative;	
 	margin:0;
 	padding:0;
 
@@ -156,7 +154,7 @@
 		  xhttp.onreadystatechange = function() {
 			if (this.readyState == 4) {
 			  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-			  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+			  if (this.status == 404) {elmnt.innerHTML = "Página no encontrada.";}
 			  /*remove the attribute, and call this function once more:*/
 			  elmnt.removeAttribute("w3-include-html");
 			  includeHTML();
@@ -226,8 +224,8 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
   // Output the result in an element with id="findecurso"
-  document.getElementById("findecurso").innerHTML = days + "<b>d</b> " + hours + "<b>h</b> "
-  + minutes + "<b>m</b> " + seconds + "<b>s</b> ";
+  document.getElementById("findecurso").innerHTML = days + " días " + hours + " horas "
+  + minutes + " minutos " + seconds + "<b>´s</b> ";
     
   // If the count down is over, write some text 
   if (distance < 0) {
